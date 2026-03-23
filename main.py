@@ -102,7 +102,14 @@ def view_tasks(tasks):
         print("  PENDING:")
         for t in pending:
             days = t.days_until_deadline()
-            deadline_str = f"{days}d left" if days < 999 else "no deadline"
+            if days < 0:
+                deadline_str = f"overdue by {abs(days)}d"
+            elif days == 0:
+                deadline_str = "due today"
+            elif days < 999:
+                deadline_str = f"{days}d left"
+            else:
+                deadline_str = "no deadline"
             flag = get_urgency_flag(days)
             print(f"  {flag} [{t.id}] {t.name}")
             print(f"       ~{t.estimate} min  |  {deadline_str}  |  {t.tags or 'no tags'}")
