@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FocusIQ</title>
+</head>
+<body>
+
+    <h1>FocusIQ</h1>
+
+   <form action="/add" method="POST">
+    <input type="text" name="task" placeholder="Task name" required>
+    <input type="date" name="deadline">
+    <input type="number" name="estimate" placeholder="Minutes needed">
+    <input type="text" name="tags" placeholder="Tags e.g. college, urgent">
+    <button type="submit">Add</button>
+</form>
+
+    <!-- Task List -->
+    <ul>
+      {% for i, task in tasks %}
+    <li>
+        <strong>{{ task.name }}</strong> 
+        | Deadline: {{ task.deadline }} 
+        | Estimate: {{ task.estimate }} mins 
+        | Tags: {{ task.tags }}
+        <a href="/delete/{{ i }}">Delete</a>
+    </li>
+{% endfor %}
+
+    <!-- AI Advice Button -->
+    <a href="/advise">
+        <button>Get AI Advice</button>
+    </a>
+
+    <!-- Show AI Advice if available -->
+    {% if advice %}
+        <h2>AI Says:</h2>
+        <p>{{ advice | safe }}</p>
+    {% endif %}
+
+</body>
+</html>

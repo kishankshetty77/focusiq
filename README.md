@@ -98,16 +98,6 @@ Here is what you should work on - in order:
 
 ---
 
-## Roadmap
-
-| Version | Feature |
-|---------|---------|
-| v0.1 (now) | Core CLI - add, view, complete, delete, JSON storage, startup priority |
-| v0.2 | AI prioritization via Claude API |
-| v0.3 | Goal Mode - type a goal, AI breaks it into tasks automatically |
-| v1.0 | Web version - runs in browser, shareable link |
-
----
 
 ## Built With
 
