@@ -1,5 +1,4 @@
 import os
-import markdown
 from groq import Groq
 from dotenv import load_dotenv
 from storage import load_tasks
@@ -17,18 +16,10 @@ def get_ai_advice():
     prompt = f"""Here are my current tasks:
 {task_list}
 
-Respond in exactly this format:
-
-DO FIRST: [task name]
-WHY: [one sentence reason]
-
-TASK ORDER:
-1. [task] - [one line reason]
-2. [task] - [one line reason]
-
-TOP TIP: [single most useful productivity tip]
-
-Keep every answer short. Maximum 2 sentences per section."""
+Please analyze these tasks and tell me:
+1. Which task I should do first and why
+2. How to prioritize the rest
+3. Any quick productivity tips"""
 
     client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
@@ -38,4 +29,5 @@ Keep every answer short. Maximum 2 sentences per section."""
             {"role": "user", "content": prompt}
         ]
     )
+
     return response.choices[0].message.content

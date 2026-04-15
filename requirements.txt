@@ -1,5 +1,4 @@
 flask
-anthropic
+groq
 python-dotenv
 gunicorn
-markdown
