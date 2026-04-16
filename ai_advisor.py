@@ -16,10 +16,16 @@ def get_ai_advice():
     prompt = f"""Here are my current tasks:
 {task_list}
 
-Please analyze these tasks and tell me:
-1. Which task I should do first and why
-2. How to prioritize the rest
-3. Any quick productivity tips"""
+Respond in this exact format, plain text only, no markdown:
+
+DO FIRST: [task name]
+WHY: [one sentence reason]
+
+TASK ORDER:
+1. [task] - [reason]
+2. [task] - [reason]
+
+TOP TIP: [one practical tip]"""
 
     client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
