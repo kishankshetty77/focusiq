@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from tasks import add_task, list_tasks, delete_task
+from storage import load_tasks, save_tasks
 from ai_advisor import get_ai_advice
 
 app = Flask(__name__)
@@ -24,6 +25,14 @@ def delete(number):
     delete_task(number)
     return redirect(url_for("index"))
 
+@app.route("/done/<int:number>")
+def mark_done(number):
+    tasks = load_tasks()
+    if 1 <= number <= len(tasks):
+        tasks[number - 1].done = True
+        save_tasks(tasks)
+    return redirect(url_for("index"))   
+
 @app.route("/advise")
 def advise():
     advice = get_ai_advice()
@@ -32,3 +41,5 @@ def advise():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+ 

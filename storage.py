@@ -8,6 +8,11 @@ from models import Task
 
 TASK_FILE = "tasks.json"
 
+def next_id(tasks):
+    if not tasks:
+        return 1
+    return max(t.id for t in tasks) + 1
+
 def load_tasks():
     if not os.path.exists(TASK_FILE):
         return []

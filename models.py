@@ -33,3 +33,8 @@ class Task:
         task.done = data.get("done", False)
         task.created_at = data.get("created_at", "")
         return task
+    
+    def days_until_deadline(self):
+        deadline_date = datetime.strptime(self.deadline, "%Y-%m-%d")
+        today = datetime.now()
+        return (deadline_date - today).days

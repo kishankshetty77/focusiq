@@ -4,7 +4,7 @@
 
 from tasks import Task
 from storage import load_tasks, save_tasks, next_id
-from ai_advisor import get_ai_priority
+from ai_advisor import get_ai_advice
 
 # terminal colors
 RED    = "\033[91m"
@@ -201,21 +201,12 @@ def ai_prioritize(tasks):
 
     print()
     print("  Fetching your priority list...")
+
+    result = get_ai_advice()
     print()
-
-    prioritized, error = get_ai_priority(tasks, energy)
-
-    if error:
-        print(f"  {error}")
-        return
-
-    print("  Here is what you should work on - in order:")
     divider()
-    for i, item in enumerate(prioritized, 1):
-        print(f"  {i}. [{item['id']}] {item['name']}")
-        print(f"     -> {item['reason']}")
-        print()
-
+    print(result)
+    divider()
 
 # ─────────────────────────────────────────────
 #  Main Loop

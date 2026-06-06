@@ -17,14 +17,17 @@
 
     <!-- Task List -->
     <ul>
-      {% for i, task in tasks %}
-    <li>
-        <strong>{{ task.name }}</strong> 
-        | Deadline: {{ task.deadline }} 
-        | Estimate: {{ task.estimate }} mins 
-        | Tags: {{ task.tags }}
-        <a href="/delete/{{ i }}">Delete</a>
-    </li>
+ {% for i, task in tasks %}
+<li {% if task.done %}style="text-decoration: line-through; opacity: 0.5;"{% endif %}>
+    <strong>{{ task.name }}</strong>
+    | Deadline: {{ task.deadline }}
+    | Estimate: {{ task.estimate }} mins
+    | Tags: {{ task.tags }}
+    {% if not task.done %}
+        <a href="/done/{{ i }}">✅ Done</a>
+    {% endif %}
+    <a href="/delete/{{ i }}">Delete</a>
+</li>
 {% endfor %}
 
     <!-- AI Advice Button -->
@@ -37,6 +40,7 @@
         <h2>AI Says:</h2>
         <p style="white-space: pre-line;">{{ advice }}</p>
     {% endif %}
+
 
 </body>
 </html>
