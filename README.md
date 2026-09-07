@@ -60,17 +60,17 @@ python app.py
 
 ```
 focusiq/
-├── app.py # Flask app entry point + routes (including /advise)
-├── models.py # Task data model
-├── storage.py # Load and save tasks
-├── ai_advisor.py # Groq API integration for AI prioritization
-├── tasks.py # Task-related logic
+├── app.py            # Flask app entry point + routes (including /advise)
+├── models.py          # Task data model
+├── storage.py         # Load and save tasks
+├── ai_advisor.py       # Groq API integration for AI prioritization
+├── tasks.py           # Task-related logic
 ├── templates/
-│ └── index.html # Frontend UI
-├── tasks.json # Task data (auto-created, gitignored)
-├── requirements.txt # Python dependencies
-├── Procfile # Render/Gunicorn start command
-├── .env # Local environment variables (gitignored, holds GROQ_API_KEY)
+│   └── index.html     # Frontend UI
+├── tasks.json          # Task data (auto-created, gitignored)
+├── requirements.txt     # Python dependencies
+├── Procfile           # Render/Gunicorn start command
+├── .env               # Local environment variables (gitignored, holds GROQ_API_KEY)
 └── README.md
 ```
 
