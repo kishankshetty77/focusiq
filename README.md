@@ -2,6 +2,8 @@
 
 > Know exactly what to work on right now.
 
+🔗 **Live app:** https://focusiq-pwr6.onrender.com
+
 ---
 
 ## Why I Built This
@@ -29,37 +31,28 @@ Built for students. Runs in your terminal. No setup needed.
 - AI advisor — tells you exactly what to work on based on your energy level
 
 ---
-
 ## Getting Started
 
-### 1. Clone the repo
-```bash
+### Use it live
+Just visit: https://focusiq-pwr6.onrender.com
+
+### Run it locally
+\`\`\`bash
 git clone https://github.com/YOUR_USERNAME/focusiq.git
 cd focusiq
-```
+pip install -r requirements.txt
+\`\`\`
 
-### 2. Run it
-```bash
-python main.py
-```
+Set your Groq API key:
+\`\`\`bash
+export GROQ_API_KEY=your_key_here
+\`\`\`
+Get a free key at https://console.groq.com/keys
 
-No external libraries needed. Pure Python.
+\`\`\`bash
+python app.py
+\`\`\`
 
-### 3. (Optional) Enable AI features
-
-**Windows:**
-```cmd
-set ANTHROPIC_API_KEY=your_key_here
-```
-
-**Mac/Linux:**
-```bash
-export ANTHROPIC_API_KEY=your_key_here
-```
-
-Get a free API key at https://console.anthropic.com
-
-The app works fully without it — AI prioritization is an optional feature.
 
 ---
 
@@ -67,11 +60,17 @@ The app works fully without it — AI prioritization is an optional feature.
 
 ```
 focusiq/
-├── main.py          # CLI entry point and menu loop
-├── tasks.py         # Task class and data model
-├── storage.py       # Load and save tasks to JSON
-├── ai_advisor.py    # Claude API integration
-├── tasks.json       # Your task data (auto-created, gitignored)
+├── app.py # Flask app entry point + routes (including /advise)
+├── models.py # Task data model
+├── storage.py # Load and save tasks
+├── ai_advisor.py # Groq API integration for AI prioritization
+├── tasks.py # Task-related logic
+├── templates/
+│ └── index.html # Frontend UI
+├── tasks.json # Task data (auto-created, gitignored)
+├── requirements.txt # Python dependencies
+├── Procfile # Render/Gunicorn start command
+├── .env # Local environment variables (gitignored, holds GROQ_API_KEY)
 └── README.md
 ```
 
