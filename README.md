@@ -38,71 +38,56 @@ Just visit: https://focusiq-pwr6.onrender.com
 
 ### Run it locally
 \`\`\`bash
-git clone https://github.com/YOUR_USERNAME/focusiq.git
+git clone https://github.com/kishankshetty77/focusiq.git
 cd focusiq
 pip install -r requirements.txt
 \`\`\`
 
-Set your Groq API key:
-\`\`\`bash
-export GROQ_API_KEY=your_key_here
+Set your Groq API key in a \`.env\` file:
+\`\`\`
+GROQ_API_KEY=your_key_here
 \`\`\`
 Get a free key at https://console.groq.com/keys
 
+Run it:
 \`\`\`bash
 python app.py
 \`\`\`
 
-
 ---
-
 ## Project Structure
 
-```
+\`\`\`
 focusiq/
-├── app.py            # Flask app entry point + routes (including /advise)
-├── models.py          # Task data model
-├── storage.py         # Load and save tasks
-├── ai_advisor.py       # Groq API integration for AI prioritization
-├── tasks.py           # Task-related logic
-├── templates/
-│   └── index.html     # Frontend UI
-├── tasks.json          # Task data (auto-created, gitignored)
-├── requirements.txt     # Python dependencies
-├── Procfile           # Render/Gunicorn start command
-├── .env               # Local environment variables (gitignored, holds GROQ_API_KEY)
+├── app.py            # Flask app, routes including /advise
+├── models.py         # Task data model
+├── storage.py        # Load and save tasks
+├── ai_advisor.py      # Groq API integration for AI prioritization
+├── templates/        # HTML templates (frontend)
+├── tasks.json         # Task data (gitignored in production)
+├── requirements.txt
+├── Procfile           # Render deployment config
 └── README.md
-```
+\`\`\`
 
 ---
-
 ## How the AI Feature Works
 
-Run the app, choose option 5, tell it your energy level.
-It looks at all your pending tasks and returns a ranked list with reasoning.
+Add your tasks with deadlines, time estimates, and tags, then click
+**⚡ Get AI Advice**. The app sends your task list to Groq's
+Llama 3.3-70B model, which returns:
 
-Example:
-```
-Here is what you should work on - in order:
-
-1. [2] Practice DSA for interview
-   -> Interview is in 3 days, tackle this while energy is high.
-
-2. [1] Complete Python assignment
-   -> Due tomorrow, 60 min task — do this right after.
-
-3. [4] Apply for internships
-   -> Important but not urgent today, handle this tomorrow morning.
-```
+- Your top priority task, with reasoning
+- A suggested task order
+- A practical tip for tackling it
 
 ---
-
 
 ## Built With
 
-- Python 3 — no external dependencies for core features
-- Anthropic Claude API — for AI prioritization
-- JSON — for persistent local storage
+- Flask — backend web framework
+- Groq API (Llama 3.3-70B) — AI-powered task prioritization
+- Render — deployment and hosting
 
 ---
 
