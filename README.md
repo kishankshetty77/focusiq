@@ -86,7 +86,7 @@ Llama 3.3-70B model, which returns:
 ## Built With
 
 - Flask — backend web framework
-- Groq API (Llama 3.3-70B) — AI-powered task prioritization
+- Groq API (openai/gpt-oss-120b) — AI-powered task prioritization
 - Render — deployment and hosting
 
 ---
