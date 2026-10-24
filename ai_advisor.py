@@ -27,13 +27,17 @@ TASK ORDER:
 
 TOP TIP: [one practical tip]"""
 
-    client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+    try:
+        client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-    response = client.chat.completions.create(
-        model="openai/gpt-oss-120b",
-        messages=[
-            {"role": "user", "content": prompt}
-        ]
-    )
+        response = client.chat.completions.create(
+            model=os.getenv("GROQ_MODEL", "openai/gpt-oss-120b"),
+            messages=[
+                {"role": "user", "content": prompt}
+            ]
+        )
 
-    return response.choices[0].message.content
+        return response.choices[0].message.content or "The AI returned an empty response. Please try again."
+    except Exception as e:
+        print(f"AI advice failed: {e}")  # still appears in Render logs
+        return "AI advisor is temporarily unavailable. Please try again in a minute."
