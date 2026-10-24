@@ -59,7 +59,7 @@ Then open http://localhost:5000
 focusiq/
 ├── app.py           # Flask app, routes including /advise
 ├── models.py        # Task data model
-├── storage.py       # Load and save tasks
+                     #Load and save tasks (one file per visitor)
 ├── ai_advisor.py    # Groq API integration for AI prioritization
 ├── templates/       # HTML templates (frontend)
 ├── tasks.json       # Task data (gitignored in production)
@@ -75,11 +75,11 @@ Add your tasks with deadlines, time estimates, and tags, then click **⚡ Get AI
 - Your top priority task, with reasoning
 - A suggested task order
 - A practical tip for tackling it
-
+- Each visitor gets their own private task list
+  
 ## Built With
-
 - **Python + Flask**: backend web framework
-- **Groq API (model="openai/gpt-oss-120b",)**: AI-powered task prioritization
+- **Groq API (openai/gpt-oss-120b)**: AI-powered task prioritization
 - **Render**: deployment and hosting
 
 ## License
