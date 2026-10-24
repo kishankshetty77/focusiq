@@ -9,6 +9,7 @@ __pycache__/
 
 # Task Data
 tasks.json
+data/
 
 # IDE
 .vscode/

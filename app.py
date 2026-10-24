@@ -1,9 +1,14 @@
+import os
+from datetime import timedelta
+from flask import Flask, render_template, request, redirect, url_for
 from flask import Flask, render_template, request, redirect, url_for
 from tasks import add_task, list_tasks, delete_task
 from storage import load_tasks, save_tasks
 from ai_advisor import get_ai_advice
 
 app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY", "dev-only-change-me")
+app.permanent_session_lifetime = timedelta(days=365)
 
 @app.route("/")
 def index():
